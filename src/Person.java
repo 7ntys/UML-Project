@@ -11,6 +11,16 @@ public abstract class Person {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", id=" + id +
+                '}';
+    }
+
     public String getFirstName() {
         return firstName;
     }

@@ -6,6 +6,13 @@ public class Customer extends Person{
         this.clientTitle = clientTitle;
     }
 
+    @Override
+    public String toString() {
+        return  super.toString()+"Customer{" +
+                "clientTitle='" + clientTitle + '\'' +
+                '}';
+    }
+
     public String getClientTitle() {
         return clientTitle;
     }
