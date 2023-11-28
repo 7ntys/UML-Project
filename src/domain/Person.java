@@ -1,19 +1,16 @@
-public abstract class Person {
-    private String firstName;
-    private String lastName;
-    private int age;
-   private int id;
+package domain;
 
-    public Person(String firstName, String lastName, int age, int id) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-        this.id = id;
-    }
+public abstract class Person {
+    protected String firstName;
+    protected String lastName;
+    protected int age;
+    protected int id;
+
+    protected Person(){}
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "domain.Person{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
@@ -37,7 +34,4 @@ public abstract class Person {
         return id;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
 }

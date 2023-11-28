@@ -1,3 +1,5 @@
+package domain;
+
 public class RentalShop {
     private double rentalShopCA;
     private String rentalShop;
