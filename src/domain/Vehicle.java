@@ -7,19 +7,75 @@ public class Vehicle{
     private int VehicleYearCreation;
     private double VehicleKMCounter;
 
-    public string getVehicleName() {
+    private Vehicle(Builder builder) {
+        this.VehicleName = builder.VehicleName;
+        this.VehicleBrand = builder.VehicleBrand;
+        this.VehicleImmatriculation = builder.VehicleImmatriculation;
+        this.VehicleYearCreation = builder.VehicleYearCreation;
+        this.VehicleKMCounter = builder.VehicleKMCounter;
+    }
+
+    @Override
+    public String toString() {
+        return "domain.Vehicle{" +
+                "VehicleName='" + VehicleName + '\'' +
+                ", VehicleBrand='" + VehicleBrand + '\'' +
+                ", VehicleImmatriculation=" + VehicleImmatriculation +
+                ", VehicleYearCreation=" + VehicleYearCreation +
+                ", VehicleKMCounter=" + VehicleKMCounter +
+                '}';
+    }
+
+    public static class Builder{
+        private String VehicleName;
+        private String VehicleBrand;
+        private String VehicleImmatriculation;
+        private int VehicleYearCreation;
+        private double VehicleKMCounter;
+
+        public Builder setVehicleName(String VehicleName) {
+            this.VehicleName = VehicleName;
+            return this;
+        }
+
+        public Builder setVehicleBrand(String VehicleBrand) {
+            this.VehicleBrand = VehicleBrand;
+            return this;
+        }
+
+        public Builder setVehicleImmatriculation(String VehicleImmatriculation) {
+            this.VehicleImmatriculation = VehicleImmatriculation;
+            return this;
+        }
+
+        public Builder setVehicleYearCreation(int VehicleYearCreation) {
+            this.VehicleYearCreation = VehicleYearCreation;
+            return this;
+        }
+
+        public Builder setVehicleKMCounter(Double VehicleKMCounter) {
+            this.VehicleKMCounter = VehicleKMCounter;
+            return this;
+        }
+
+        public Vehicle build(){
+            return new Vehicle(this);
+        }
+    }
+
+    public String getVehicleName() {
         return VehicleName;
     }
-    public string getVehicleBrand() {
+    public String getVehicleBrand() {
         return VehicleBrand;
     }
-    public string getVehicleImmatriculation() {
+    public String getVehicleImmatriculation() {
         return VehicleImmatriculation;
     }
     public int getVehicleYearCreation() {
-        return VehicleYearCreationehicleName;
+        return VehicleYearCreation;
     }
-    public string getVehicleKMCounter() {
+    public double getVehicleKMCounter() {
         return VehicleKMCounter;
     }
     public void setVehicleKMCounter(double VehicleKMCounter){
