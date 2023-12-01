@@ -5,10 +5,10 @@ public class RentalShop {
     private String rentalShop;
     private String rentalShopAdress;
 
-    RentalShop(String rentalShop, String rentalShopAdress, double rentalShopCA) {
-        this.rentalShop = rentalShop;
-        this.rentalShopAdress = rentalShopAdress;
-        this.rentalShopCA = rentalShopCA;
+    RentalShop(Builder builder) {
+        this.rentalShop = builder.rentalShop;
+        this.rentalShopAdress = builder.rentalShopAdress;
+        this.rentalShopCA = builder.rentalShopCA;
     }
 
     public double getRentalShopCA() {
@@ -33,6 +33,31 @@ public class RentalShop {
 
     public void setRentalShopAdress(String rentalShopAdress) {
         this.rentalShopAdress = rentalShopAdress;
+    }
+
+    public static class Builder {
+        private double rentalShopCA;
+        private String rentalShop;
+        private String rentalShopAdress;
+
+        public Builder setRentalShopCA(double rentalShopCA) {
+            this.rentalShopCA = rentalShopCA;
+            return this;
+        }
+
+        public Builder setRentalShop(String rentalShop) {
+            this.rentalShop = rentalShop;
+            return this;
+        }
+
+        public Builder setRentalShopAdress(String rentalShopAdress) {
+            this.rentalShopAdress = rentalShopAdress;
+            return this;
+        }
+
+        public RentalShop build() {
+            return new RentalShop(this);
+        }
     }
 
     // GetListofVehicleAvailable()
