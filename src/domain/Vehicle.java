@@ -3,7 +3,7 @@ package domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Vehicle{
+public class Vehicle {
     private String VehicleName;
     private String VehicleBrand;
     private String VehicleImmatriculation;
@@ -22,17 +22,11 @@ public class Vehicle{
 
     @Override
     public String toString() {
-        if(this.reservation != null) {
-            return "domain.Vehicle{" +
-                    "VehicleName='" + VehicleName + '\'' +
-                    ", VehicleBrand='" + VehicleBrand + '\'' +
-                    ", VehicleImmatriculation=" + VehicleImmatriculation +
-                    ", VehicleYearCreation=" + VehicleYearCreation +
-                    ", VehicleKMCounter=" + VehicleKMCounter +
-                    ", reservation=" + reservation +
-                    '}';
-        }
-        else {
+        if (this.reservation != null) { // Renault Clio 2020
+            return VehicleBrand + " " + VehicleName + " " + VehicleYearCreation + " ( Immatriculate : "
+                    + VehicleImmatriculation + ", Counter : " + VehicleKMCounter + " ) ( " + reservation.size()
+                    + " reservations)";
+        } else {
             return "domain.Vehicle{" +
                     "VehicleName='" + VehicleName + '\'' +
                     ", VehicleBrand='" + VehicleBrand + '\'' +
@@ -43,17 +37,19 @@ public class Vehicle{
         }
     }
 
-    public static class Builder{
+    public static class Builder {
         private String VehicleName;
         private String VehicleBrand;
         private String VehicleImmatriculation;
         private int VehicleYearCreation;
         private double VehicleKMCounter;
         private List<Reservation> reservation = new ArrayList<>();
+
         public Builder setVehicleName(String VehicleName) {
             this.VehicleName = VehicleName;
             return this;
         }
+
         public Builder setReservation(List<Reservation> reservation) {
             this.reservation = reservation;
             return this;
@@ -79,7 +75,7 @@ public class Vehicle{
             return this;
         }
 
-        public Vehicle build(){
+        public Vehicle build() {
             return new Vehicle(this);
         }
     }
@@ -87,30 +83,37 @@ public class Vehicle{
     public String getVehicleName() {
         return VehicleName;
     }
+
     public String getVehicleBrand() {
         return VehicleBrand;
     }
+
     public String getVehicleImmatriculation() {
         return VehicleImmatriculation;
     }
+
     public int getVehicleYearCreation() {
         return VehicleYearCreation;
     }
+
     public double getVehicleKMCounter() {
         return VehicleKMCounter;
     }
+
     public List<Reservation> getReservation() {
         return reservation;
     }
-    public void setReservation(List<Reservation> reservation){
+
+    public void setReservation(List<Reservation> reservation) {
         this.reservation = reservation;
     }
-    public void addReservation(Reservation reservation){
+
+    public void addReservation(Reservation reservation) {
         this.reservation.add(reservation);
     }
-    public void setVehicleKMCounter(double VehicleKMCounter){
+
+    public void setVehicleKMCounter(double VehicleKMCounter) {
         this.VehicleKMCounter = VehicleKMCounter;
     }
-    
 
 }
