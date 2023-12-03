@@ -1,8 +1,10 @@
 package util;
 import domain.Vehicle;
 import java.util.ArrayList;
+import domain.Employee;
 import java.util.List;
 
+import repository.EmployeeRepository;
 import repository.VehicleRepository;
 public class Util {
     public static List<Vehicle> getVehiclesByBrand(String brand){
@@ -24,5 +26,11 @@ public class Util {
             }
         }
         return vehicles;
+    }
+    public static Employee getRandomEmployee(){
+        EmployeeRepository repo = EmployeeRepository.getInstance();
+        List<Employee> employees = repo.getAllEmployees();
+        int random = (int) (Math.random() * employees.size());
+        return employees.get(random);
     }
 }

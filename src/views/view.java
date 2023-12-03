@@ -1,6 +1,8 @@
 package views;
 import domain.Customer;
 import domain.Reservation;
+import domain.Employee;
+import util.Util;
 import domain.Vehicle;
 import repository.CustomerRepository;
 import factory.CustomerFactory;
@@ -13,7 +15,8 @@ import static util.Util.getVehiclesByName;
 public class view {
     public static void display(){
         Scanner scan = new Scanner(System.in);
-        System.out.println("Hello welcome to Group 8 Rental Shop !\nHow can we help you ?\n" +
+        Employee employe = Util.getRandomEmployee();
+        System.out.println(employe.getCatchPhrase()+"\n" +
                 "1. Search for a car by brand\n" +
                 "2. Search for a car by name\n" +
                 "3. Exit");
