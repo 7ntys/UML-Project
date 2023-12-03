@@ -23,10 +23,6 @@ public class RentalShop {
         return rentalShop;
     }
 
-    public void setRentalShop(String rentalShop) {
-        this.rentalShop = rentalShop;
-    }
-
     public String getRentalShopAdress() {
         return rentalShopAdress;
     }
@@ -59,6 +55,4 @@ public class RentalShop {
             return new RentalShop(this);
         }
     }
-
-    // GetListofVehicleAvailable()
 }
