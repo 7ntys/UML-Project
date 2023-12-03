@@ -16,8 +16,7 @@ public class view {
         System.out.println("Hello welcome to Group 8 Rental Shop !\nHow can we help you ?\n" +
                 "1. Search for a car by brand\n" +
                 "2. Search for a car by name\n" +
-                "3. Search for a car by tier\n"+
-                "4. Exit");
+                "3. Exit");
         int choice = scan.nextInt();
         switch (choice){
             case 1:
@@ -26,11 +25,9 @@ public class view {
             case 2:
                 searchByName();
                 break;
-            case 3:
-                System.out.println("Sorry this feature is not available yet");
-                break;
-            case 4 :
-                break;
+            case 3 :
+                System.out.println("Thank you for your visit !");
+                return;
             default:
                 System.out.println("Sorry this feature is not available yet");
                 break;
@@ -43,7 +40,7 @@ public class view {
         System.out.println("What is your last name ?");
         String lastName = scan.nextLine();
         System.out.println("What is your age ?");
-        int age = scan.nextInt();
+        int age = Integer.parseInt(scan.nextLine());
         System.out.println("What is your title ?");
         String title = scan.nextLine();
         System.out.println("Thank you for your registration !");
@@ -57,22 +54,15 @@ public class view {
         String firstName = scan.nextLine();
         System.out.println("What is your last name ?");
         String lastName = scan.nextLine();
-        CustomerRepository repo = CustomerRepository.getRepository();
-        List<Customer> customers = repo.getAllCustomers();
+        List<Customer> customers = CustomerRepository.getAllCustomers();
         for(Customer customer : customers){
             if(customer.getFirstName().equals(firstName) && customer.getLastName().equals(lastName)){
                 System.out.println("Welcome back " + customer.getClientTitle() + " " + customer.getLastName());
-                display();
+                return;
             }
         }
         System.out.println("Sorry we don't have any customer with this name in our database");
-        System.out.println("Do you want to create an account ?\n1: Yes !\n2: No thanks, take me back");
-        int choice = scan.nextInt();
-        if (choice == 1) {
-            createCustomer();
-        } else {
-            display();
-        }
+        displayAuth();
     }
     public static void displayAuth(){
         Scanner scan = new Scanner(System.in);
@@ -85,8 +75,8 @@ public class view {
         }
     }
     public static <T> void print(List<T> items){
-        for(T item : items){
-            System.out.println(item);
+        for(int i=0;i<items.size();i++){
+            System.out.println(i+1 + " : " + items.get(i));
         }
     }
     public static void searchByBrand(){
@@ -97,17 +87,17 @@ public class view {
         if(vehicles.isEmpty()) {
             System.out.println("Sorry we don't have any " + search + " in our shop");
         }else{
-            System.out.println("Here are the " + search + " we have in our shop :");
+            System.out.println("Here are the " + search + " available in our shop :");
             print(vehicles);
+            System.out.println(vehicles.size()+1 + " : " + "Take me back");
         }
-        System.out.println("Do you want to rent it ?\n1: Yes !\n2: No thanks, take me back");
         int choice = scan.nextInt();
-        if (choice == 1) {
+        if (choice < vehicles.size()+1) {
             displayAuth();
         } else {
             display();
         }
-        makeReservation(vehicles.get(0));
+        makeReservation(vehicles.get(choice-1));
 
     }
     public static void searchByName(){
@@ -120,7 +110,16 @@ public class view {
         }else{
             System.out.println("Here are the " + search + " we have in our shop :");
             print(vehicles);
+            System.out.println(vehicles.size()+1 + " : " + "Take me back");
         }
+        int choice = scan.nextInt();
+        if (choice < vehicles.size()+1) {
+            displayAuth();
+        } else {
+            display();
+        }
+        makeReservation(vehicles.get(choice-1));
+
     }
     public static void makeReservation(Vehicle vehicle){
         Scanner scan = new Scanner(System.in);

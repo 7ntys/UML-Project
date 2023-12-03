@@ -9,7 +9,7 @@ public class Util {
         VehicleRepository repo = VehicleRepository.getRepository();
         List<Vehicle> vehicles = new ArrayList<Vehicle>();
         for(Vehicle vehicle : repo.getAllVehicles()){
-            if(vehicle.getVehicleBrand().equals(brand)){
+            if(vehicle.getVehicleBrand().equals(brand) && vehicle.getReservation() == null){
                 vehicles.add(vehicle);
             }
         }
