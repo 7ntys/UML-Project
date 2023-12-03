@@ -1,7 +1,7 @@
-import static views.view.display;
+import static views.view.enterPoint;
 
 public class Main {
     public static void main(String[] args) {
-        display();
+        enterPoint();
     }
 }

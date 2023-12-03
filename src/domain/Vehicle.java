@@ -1,12 +1,15 @@
 package domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Vehicle{
     private String VehicleName;
     private String VehicleBrand;
     private String VehicleImmatriculation;
     private int VehicleYearCreation;
     private double VehicleKMCounter;
-    private Reservation reservation;
+    private List<Reservation> reservation;
 
     private Vehicle(Builder builder) {
         this.VehicleName = builder.VehicleName;
@@ -19,13 +22,25 @@ public class Vehicle{
 
     @Override
     public String toString() {
-        return "domain.Vehicle{" +
-                "VehicleName='" + VehicleName + '\'' +
-                ", VehicleBrand='" + VehicleBrand + '\'' +
-                ", VehicleImmatriculation=" + VehicleImmatriculation +
-                ", VehicleYearCreation=" + VehicleYearCreation +
-                ", VehicleKMCounter=" + VehicleKMCounter +
-                '}';
+        if(this.reservation != null) {
+            return "domain.Vehicle{" +
+                    "VehicleName='" + VehicleName + '\'' +
+                    ", VehicleBrand='" + VehicleBrand + '\'' +
+                    ", VehicleImmatriculation=" + VehicleImmatriculation +
+                    ", VehicleYearCreation=" + VehicleYearCreation +
+                    ", VehicleKMCounter=" + VehicleKMCounter +
+                    ", reservation=" + reservation +
+                    '}';
+        }
+        else {
+            return "domain.Vehicle{" +
+                    "VehicleName='" + VehicleName + '\'' +
+                    ", VehicleBrand='" + VehicleBrand + '\'' +
+                    ", VehicleImmatriculation=" + VehicleImmatriculation +
+                    ", VehicleYearCreation=" + VehicleYearCreation +
+                    ", VehicleKMCounter=" + VehicleKMCounter +
+                    '}';
+        }
     }
 
     public static class Builder{
@@ -34,12 +49,12 @@ public class Vehicle{
         private String VehicleImmatriculation;
         private int VehicleYearCreation;
         private double VehicleKMCounter;
-        private Reservation reservation;
+        private List<Reservation> reservation = new ArrayList<>();
         public Builder setVehicleName(String VehicleName) {
             this.VehicleName = VehicleName;
             return this;
         }
-        public Builder setReservation(Reservation reservation) {
+        public Builder setReservation(List<Reservation> reservation) {
             this.reservation = reservation;
             return this;
         }
@@ -84,11 +99,14 @@ public class Vehicle{
     public double getVehicleKMCounter() {
         return VehicleKMCounter;
     }
-    public Reservation getReservation() {
+    public List<Reservation> getReservation() {
         return reservation;
     }
-    public void setReservation(Reservation reservation){
+    public void setReservation(List<Reservation> reservation){
         this.reservation = reservation;
+    }
+    public void addReservation(Reservation reservation){
+        this.reservation.add(reservation);
     }
     public void setVehicleKMCounter(double VehicleKMCounter){
         this.VehicleKMCounter = VehicleKMCounter;

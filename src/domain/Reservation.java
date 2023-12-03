@@ -1,9 +1,11 @@
 package domain;
 
+import java.util.Date;
+
 public class Reservation{
     private String reservationId;
-    private String reservationDebutDate;
-    private String reservationEndDate;
+    private Date reservationDebutDate;
+    private Date reservationEndDate;
 
     private Reservation(Builder builder) {
         this.reservationId = builder.reservationId;
@@ -22,20 +24,20 @@ public class Reservation{
 
     public static class Builder{
         private String reservationId;
-        private String reservationDebutDate;
-        private String reservationEndDate;
+        private Date reservationDebutDate;
+        private Date reservationEndDate;
 
         public Builder setReservationId(String reservationId) {
             this.reservationId = reservationId;
             return this;
         }
 
-        public Builder setReservationDebutDate(String reservationDebutDate) {
+        public Builder setReservationDebutDate(Date reservationDebutDate) {
             this.reservationDebutDate = reservationDebutDate;
             return this;
         }
 
-        public Builder setReservationEndDate(String reservationEndDate) {
+        public Builder setReservationEndDate(Date reservationEndDate) {
             this.reservationEndDate = reservationEndDate;
             return this;
         }
@@ -45,16 +47,16 @@ public class Reservation{
         }
     }
 
-    public String getReservationDebutDate() {
+    public Date getReservationDebutDate() {
         return reservationDebutDate;
     }
-    public void setReservationDebutDate(String ReservationDebutDate){
+    public void setReservationDebutDate(Date ReservationDebutDate){
         this.reservationDebutDate = ReservationDebutDate;
     }
-    public String getReservationEndDate() {
+    public Date getReservationEndDate() {
         return reservationEndDate;
     }
-    public void setReservationEndDate(String ReservationEndDate){
+    public void setReservationEndDate(Date ReservationEndDate){
         this.reservationEndDate = ReservationEndDate;
     }
 }
