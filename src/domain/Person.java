@@ -4,9 +4,10 @@ public abstract class Person {
     protected String firstName;
     protected String lastName;
     protected int age;
-    protected int id;
+    protected String id;
 
-    protected Person(){}
+    protected Person() {
+    }
 
     @Override
     public String toString() {
@@ -30,7 +31,7 @@ public abstract class Person {
         return age;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

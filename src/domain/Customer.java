@@ -13,7 +13,7 @@ public class Customer extends Person {
 
     @Override
     public String toString() {
-        return  super.toString()+"domain.Customer{" +
+        return super.toString() + "domain.Customer{" +
                 "clientTitle='" + clientTitle + '\'' +
                 '}';
     }
@@ -25,12 +25,13 @@ public class Customer extends Person {
     public void setClientTitle(String clientTitle) {
         this.clientTitle = clientTitle;
     }
-    public static class Builder{
+
+    public static class Builder {
         private String clientTitle;
         protected String firstName;
         protected String lastName;
         protected int age;
-        protected int id;
+        protected String id;
 
         public Builder setFirstName(String firstName) {
             this.firstName = firstName;
@@ -47,7 +48,7 @@ public class Customer extends Person {
             return this;
         }
 
-        public Builder setId(int id) {
+        public Builder setId(String id) {
             this.id = id;
             return this;
         }
@@ -57,7 +58,7 @@ public class Customer extends Person {
             return this;
         }
 
-        public Customer build(){
+        public Customer build() {
             return new Customer(this);
         }
     }
