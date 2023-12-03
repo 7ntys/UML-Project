@@ -6,7 +6,8 @@ public abstract class Person {
     protected int age;
     protected String id;
 
-    protected Person(){}
+    protected Person() {
+    }
 
     @Override
     public String toString() {

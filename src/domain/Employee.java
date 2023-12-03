@@ -1,6 +1,6 @@
 package domain;
 
-public class Employee extends Person{
+public class Employee extends Person {
     private double salary;
     private String jobTitle;
 
@@ -38,7 +38,7 @@ public class Employee extends Person{
         this.jobTitle = jobTitle;
     }
 
-    public static class Builder{
+    public static class Builder {
         private double salary;
         private String jobTitle;
         private String firstName;
@@ -65,6 +65,7 @@ public class Employee extends Person{
             this.id = id;
             return this;
         }
+
         public Builder setSalary(double salary) {
             this.salary = salary;
             return this;
@@ -75,7 +76,7 @@ public class Employee extends Person{
             return this;
         }
 
-        public Employee build(){
+        public Employee build() {
             Employee employee = new Employee(Builder.this);
             employee.setSalary(salary);
             employee.setJobTitle(jobTitle);
