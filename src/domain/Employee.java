@@ -4,6 +4,7 @@ public class Employee extends Person {
     private double salary;
     private String jobTitle;
     private String catchPhrase;
+
     private Employee(Builder builder) {
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
@@ -37,7 +38,8 @@ public class Employee extends Person {
     public void setJobTitle(String jobTitle) {
         this.jobTitle = jobTitle;
     }
-    public String getCatchPhrase(){
+
+    public String getCatchPhrase() {
         return this.catchPhrase;
     }
 
@@ -49,14 +51,17 @@ public class Employee extends Person {
         private int age;
         private String id;
         private String catchPhrase;
+
         public Builder setFirstName(String firstName) {
             this.firstName = firstName;
             return this;
         }
-        public Builder setCatchPhrase(String catchPhrase){
+
+        public Builder setCatchPhrase(String catchPhrase) {
             this.catchPhrase = catchPhrase;
             return this;
         }
+
         public Builder setLastName(String lastName) {
             this.lastName = lastName;
             return this;
