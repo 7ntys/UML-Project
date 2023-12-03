@@ -1,6 +1,7 @@
 package repository;
 
 import domain.Customer;
+import factory.CustomerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,29 +13,11 @@ public class CustomerRepository {
         populate();
     }
     private void populate(){
-        Customer customer1 = new Customer.Builder()
-                .setFirstName("John")
-                .setLastName("Doe")
-                .setAge(25)
-                .setId("1")
-                .setClientTitle("Mr")
-                .build();
+        Customer customer1 = CustomerFactory.getCustomer("John","Doe",25,"1","Mr");
         repository.add(customer1);
-        Customer customer2 = new Customer.Builder()
-                .setFirstName("Jane")
-                .setLastName("Doe")
-                .setAge(25)
-                .setId("2")
-                .setClientTitle("Mrs")
-                .build();
+        Customer customer2 = CustomerFactory.getCustomer("Julien","Le Ber",20,"2","Mr");
         repository.add(customer2);
-        Customer customer3 = new Customer.Builder()
-                .setFirstName("Jack")
-                .setLastName("Doe")
-                .setAge(25)
-                .setId("3")
-                .setClientTitle("Mr")
-                .build();
+        Customer customer3 = CustomerFactory.getCustomer("Cedric","Doumbe",23,"3","Mr");
         repository.add(customer3);
     }
 
