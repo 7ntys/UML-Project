@@ -44,7 +44,7 @@ public class Employee extends Person{
         private String firstName;
         private String lastName;
         private int age;
-        private int id;
+        private String id;
 
         public Builder setFirstName(String firstName) {
             this.firstName = firstName;
@@ -61,7 +61,7 @@ public class Employee extends Person{
             return this;
         }
 
-        public Builder setId(int id) {
+        public Builder setId(String id) {
             this.id = id;
             return this;
         }

@@ -6,6 +6,7 @@ public class Vehicle{
     private String VehicleImmatriculation;
     private int VehicleYearCreation;
     private double VehicleKMCounter;
+    private Reservation reservation;
 
     private Vehicle(Builder builder) {
         this.VehicleName = builder.VehicleName;
@@ -13,6 +14,7 @@ public class Vehicle{
         this.VehicleImmatriculation = builder.VehicleImmatriculation;
         this.VehicleYearCreation = builder.VehicleYearCreation;
         this.VehicleKMCounter = builder.VehicleKMCounter;
+        this.reservation = builder.reservation;
     }
 
     @Override
@@ -32,9 +34,13 @@ public class Vehicle{
         private String VehicleImmatriculation;
         private int VehicleYearCreation;
         private double VehicleKMCounter;
-
+        private Reservation reservation;
         public Builder setVehicleName(String VehicleName) {
             this.VehicleName = VehicleName;
+            return this;
+        }
+        public Builder setReservation(Reservation reservation) {
+            this.reservation = reservation;
             return this;
         }
 
@@ -77,6 +83,12 @@ public class Vehicle{
     }
     public double getVehicleKMCounter() {
         return VehicleKMCounter;
+    }
+    public Reservation getReservation() {
+        return reservation;
+    }
+    public void setReservation(Reservation reservation){
+        this.reservation = reservation;
     }
     public void setVehicleKMCounter(double VehicleKMCounter){
         this.VehicleKMCounter = VehicleKMCounter;

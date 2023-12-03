@@ -30,7 +30,7 @@ public class Customer extends Person {
         protected String firstName;
         protected String lastName;
         protected int age;
-        protected int id;
+        protected String id;
 
         public Builder setFirstName(String firstName) {
             this.firstName = firstName;
@@ -47,7 +47,7 @@ public class Customer extends Person {
             return this;
         }
 
-        public Builder setId(int id) {
+        public Builder setId(String id) {
             this.id = id;
             return this;
         }
