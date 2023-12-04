@@ -6,7 +6,7 @@ import factory.CustomerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerRepository {
+public class CustomerRepository implements IRepository<Customer,String> {
     private List<Customer> repository = new ArrayList<Customer>();
     private static CustomerRepository instance = null;
     private CustomerRepository(){
@@ -14,11 +14,11 @@ public class CustomerRepository {
     }
     private void populate(){
         Customer customer1 = CustomerFactory.getCustomer("John","Doe",25,"1","Mr");
-        repository.add(customer1);
+        create(customer1);
         Customer customer2 = CustomerFactory.getCustomer("Julien","Le Ber",20,"2","Mr");
-        repository.add(customer2);
+        create(customer2);
         Customer customer3 = CustomerFactory.getCustomer("Cedric","Doumbe",23,"3","Mr");
-        repository.add(customer3);
+        create(customer3);
     }
 
     public static CustomerRepository getRepository(){
@@ -28,14 +28,44 @@ public class CustomerRepository {
         return instance;
     }
     //CRUDE OPERATION :
-    public void addCustomer(Customer customer){
-        repository.add(customer);
-    }
-    public void removeCustomer(Customer customer){
-        repository.remove(customer);
-    }
     public static List<Customer> getAllCustomers(){
         CustomerRepository repo = CustomerRepository.getRepository();
         return repo.repository;
+    }
+
+    @Override
+    public void create(Customer customer) {
+        repository.add(customer);
+    }
+
+    @Override
+    public Customer read(String s) {
+        for (Customer customer : repository){
+            if (customer.getId() == s){
+                return customer;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void update(Customer customer) {
+        for (Customer customer1 : repository){
+            if (customer1.getId() == customer.getId()){
+                repository.remove(customer1);
+                repository.add(customer);
+            }
+        }
+    }
+
+    @Override
+    public boolean delete(String s) {
+        for (Customer customer : repository){
+            if (customer.getId() == s){
+                repository.remove(customer);
+                return true;
+            }
+        }
+        return false;
     }
 }

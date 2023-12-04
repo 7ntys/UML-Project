@@ -56,7 +56,7 @@ public class view {
         System.out.println("Thank you for your registration !");
         Customer customer = CustomerFactory.getCustomer(firstName, lastName, age, Math.random() * 10000 + "", title);
         CustomerRepository repo = CustomerRepository.getRepository();
-        repo.addCustomer(customer);
+        repo.create(customer);
     }
 
     public static void authentify() {
